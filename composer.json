@@ -1,0 +1,13 @@
+{
+    "name": "login/composer",
+    "description": "Objektinio prisijungimo pavyzdys",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "App\\DB\\": "app/db"
+        }
+    },
+    "require": {
+        "ramsey/uuid": "^4.0"
+    }
+}

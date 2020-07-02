@@ -39,9 +39,6 @@ class App
                     require(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php');
                 }
             }
-        }
-
-        if (count(self::$params) == 2) {
             if (self::$params[0] == 'bank') {
 
                 if (self::$params[1] == 'addAccount') {
@@ -52,12 +49,34 @@ class App
                     self::redirect('bank/create');
                 }
 
+                if (self::$params[1] == 'delete') {
+                    _d('trynimas'.$_POST['delete']);
+                    $db = new DB;        
+                    $db->delete($_POST['delete']);
+                    $_SESSION['note'] = 'Ištrinta kliento sąskaita';
+                    self::redirect('bank/list');
+                }
+
                 if (file_exists(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php')) {
                     require(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php');
                 }
-            }
+            }            
         }
+        if (count(self::$params) == 3) {
+            if (self::$params[0] == 'bank') {
 
+                if (self::$params[1] == 'add') {
+                    if (file_exists(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php')) {
+                        require(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php');
+                    } 
+                    $id = self::$params[2];
+
+                }
+            }
+
+                           
+        }
+        
         if (count(self::$params) == 1) {
             if (self::$params[0] == 'doLogin') {
 

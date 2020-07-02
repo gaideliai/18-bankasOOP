@@ -1,3 +1,8 @@
+<?php
+$DB = new App\DB\JsonDb;
+$data = $DB->showAll();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +16,7 @@
 <body>
     <header>
         <nav>
-            <!-- <a href=<?='accounts-list.php'?>>Sąskaitų sąrašas</a> -->
+            <a href="<?= App\App::URL ?>bank/list">Sąskaitų sąrašas</a>
             <a href="<?= App\App::URL ?>logout">Atsijungti
                 <i class="fa fa-sign-out"></i>
             </a>
@@ -47,7 +52,7 @@ if(isset($_SESSION['surname'])) {
 }
 ?>
             <label for="">Sąskaitos numeris</label><br>
-            <input type="text" name="account" value="<?= generateAccountNumber($data)?>" readonly><br><br>
+            <input type="text" name="account" value="<?= App\Account::generateAccountNumber($data)?>" readonly><br><br>
             <label for="">Asmens kodas</label><br>
             <input type="text" maxlength="11" name="id" value=<?= $_SESSION['id'] ?? ''?>><br><br>
 <?php

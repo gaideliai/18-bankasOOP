@@ -1,17 +1,27 @@
+
+<?php
+$DB = new App\DB\JsonDb;
+$data = $DB->showAll();
+// sort($data);
+// $userInfo = $DB->show('d8f201a8-bf1d-4508-a011-be8c422ea2cc');
+// _d($userInfo);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bankas</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./../../public/css/main.css">
+    <link rel="stylesheet" href="./../../public/css/font-awesome.min.css">
 </head>
 <body>
     <header>
         <nav>
-            <a href=<?=$URL.'new-account.php'?>>Nauja sąskaita</a>
-            <a href=<?=$URL.'login.php?logout'?>>Atsijungti
+            <a href="<?= App\App::URL ?>bank/create">Nauja sąskaita</a>
+            <a href="<?= App\App::URL ?>logout">Atsijungti
                 <i class="fa fa-sign-out"></i>
             </a>
         </nav>       
@@ -35,25 +45,26 @@ if(isset($_SESSION['note'])) {
             <th>Tvarkyti sąskaitą</th>
         </tr>
 
-    <?php foreach ($data as $account) :?>
+    <?php foreach ($data as $key => $account) :
+        _d($key)?>
         <tr>
             <td><?= $account['name'] ?></td>
             <td><?= $account['surname'] ?></td>
             <td><?= $account['id'] ?></td>
-            <td class="iban"><?= $account['account'] ?></td>
+            <td class="iban"><?= App\Account::formatIban($account['account']) ?></td>
             <td>
-                <form action="" method="post">
+                <form action="<?= App\App::URL ?>bank/delete" method="post">
                     
-                    <button type="submit" name="delete" value="<?= $account['account'] ?>">
+                    <button class="list" type="submit" name="delete" value="<?= $key ?>">
                         <i class="fa fa-trash"></i>Ištrinti sąskaitą
                     </button>
                     <div class="btn">
-                        <a href=<?=$URL.'add.php?account='.$account['account']?>>
+                        <a href="<?= App\App::URL.'bank/add/'.$key ?>">
                             <i class="fa fa-plus-square"></i>Pridėti lėšų
                         </a>
                     </div>
                     <div class="btn">
-                        <a href=<?=$URL.'deduct.php?account='.$account['account']?>>
+                        <a href="<?= App\App::URL.'bank/deduct/'.$key ?>">
                             <i class="fa fa-minus-square"></i>Nuskaičiuoti lėšas
                         </a>
                     </div>                    

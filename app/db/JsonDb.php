@@ -23,6 +23,7 @@ class JsonDB implements DataBase
     }
  
     public function update(string $userId, array $userData) : void {
+        
 
     }
  
@@ -32,14 +33,21 @@ class JsonDB implements DataBase
     }
  
     public function show(string $userId) : array {
+        foreach ($this->data as $key => $value) {
+            if ($key == $userId) {
+                return $value;
+            }
+        }
 
     }
     
     public function showAll() : array {
-        
+        return $this->data;
     }
 
     private function save() {
         file_put_contents('./../db/data.json', json_encode($this->data));
     }
+
+    
 }

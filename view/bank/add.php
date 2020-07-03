@@ -52,7 +52,7 @@ if(isset($_SESSION['note'])) {
             <td><?= $user['name'] ?></td>
             <td><?= $user['surname'] ?></td>
             <td><?= App\Account::formatIban($user['account']) ?></td>
-            <td><?= $user['balance'] ?></td>
+            <td><?= App\Account::formatCurrency($user['balance']) ?></td>
             <td>EUR</td>
             <td>
                 <form action=<?= App\App::URL.'bank/addFunds/'.App\App::getUriParams()[2]?> method="post">

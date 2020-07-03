@@ -52,9 +52,15 @@ class App
                 }
 
                 if (self::$params[1] == 'delete') {
-                    $db = new DB;        
-                    $db->delete($_POST['delete']);
-                    $_SESSION['note'] = 'Ištrinta kliento sąskaita';
+                    $db = new DB;
+                    $user = $db->show($_POST['delete']);
+                    if ($user['balance'] == 0) {
+                        $db->delete($_POST['delete']);
+                        $_SESSION['note'] = 'Ištrinta kliento sąskaita';
+                    } else {
+                        $_SESSION['note'] = '<span style="color:red;">Sąskaitos ištrinti nepavyko</span>';
+                    }
+                    
                     self::redirect('bank/list');
                 }
 

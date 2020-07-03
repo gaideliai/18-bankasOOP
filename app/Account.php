@@ -41,13 +41,18 @@ class Account {
         return $string;
     }
 
+    public static function formatCurrency(float $balance) {
+        $balance = number_format($balance, 2, ',', ' ');
+        return $balance;
+    }
+
     public static function sum() {
         if (isset($_POST['balance'])) {
             $DB = new DB;
-            $user = $DB->show(App::getUriParams()[2]);
+            $userData = $DB->show(App::getUriParams()[2]);
             if ($_POST['balance'] > 0) {
-                $user['balance'] += $_POST['balance'];    
-                $DB->update(App::getUriParams()[2], $user);
+                $userData['balance'] += $_POST['balance'];    
+                $DB->update(App::getUriParams()[2], $userData);
                 $_SESSION['note'] = 'Lėšos įskaitytos į sąskaitą';
             } else {
                 $_SESSION['note'] = '<span style="color:red;">Įveskite sumą - teigiamą skaičių</span>';

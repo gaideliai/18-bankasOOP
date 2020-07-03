@@ -32,8 +32,8 @@ class JsonDB implements DataBase
     }
  
     public function delete(string $userId) : void {
-        unset($this->data[$userId]);
-        $this->save();
+            unset($this->data[$userId]);
+            $this->save();
     }
  
     public function show(string $userId) : array {

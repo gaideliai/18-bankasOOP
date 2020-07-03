@@ -12,12 +12,13 @@ _d($user);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bankas</title>
-    <link rel="stylesheet" href="./../../public/css/main.css">
-    <link rel="stylesheet" href="./../../public/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./../../../public/css/main.css">
+    <link rel="stylesheet" href="./../../../public/css/font-awesome.min.css">
 </head>
 <body>
     <header>
         <nav>
+            <a href="<?= App\App::URL ?>slaptas-1">Pagrindinis</a>
             <a href="<?= App\App::URL ?>bank/list">Sąskaitų sąrašas</a>
             <a href="<?= App\App::URL ?>bank/create">Nauja sąskaita</a>
             <a href="<?= App\App::URL ?>logout">Atsijungti

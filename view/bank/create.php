@@ -16,6 +16,7 @@ $data = $DB->showAll();
 <body>
     <header>
         <nav>
+            <a href="<?= App\App::URL ?>slaptas-1">Pagrindinis</a>
             <a href="<?= App\App::URL ?>bank/list">Sąskaitų sąrašas</a>
             <a href="<?= App\App::URL ?>logout">Atsijungti
                 <i class="fa fa-sign-out"></i>

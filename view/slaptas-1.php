@@ -14,4 +14,21 @@
         </a>
     </nav>       
 </header>
-<h1>Slaptas</h1>
+<div class="container">
+    <h1>Sveiki atvykę!</h1>
+    <div class="menu">
+        <div class="card">
+            <i class="fa fa-list-alt"></i>
+            <a class="card-link" href="<?= App\App::URL ?>bank/list">Sąskaitų sąrašas</a>
+            <p>Peržiūrėkite sąskaitų sąrašą, tvarkykite klientų sąskaitas, ištrinkite sąskaitą</p>
+        </div>
+        <div class="card">
+            <i class="fa fa-address-card-o"></i>
+            <a class="card-link"href="<?= App\App::URL ?>bank/create">Nauja sąskaita</a>
+            <p>Sukurkite naują sąskaitą, pridėkite naują kliento sąskaitą prie sąskaitų sąrašo</p>
+        </div>
+    </div>
+</div>
+
+
+

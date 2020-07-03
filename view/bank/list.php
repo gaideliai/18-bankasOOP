@@ -2,9 +2,6 @@
 <?php
 $DB = new App\DB\JsonDb;
 $data = $DB->showAll();
-// sort($data);
-// $userInfo = $DB->show('d8f201a8-bf1d-4508-a011-be8c422ea2cc');
-// _d($userInfo);
 ?>
 
 
@@ -20,6 +17,7 @@ $data = $DB->showAll();
 <body>
     <header>
         <nav>
+            <a href="<?= App\App::URL ?>slaptas-1">Pagrindinis</a>
             <a href="<?= App\App::URL ?>bank/create">Nauja sąskaita</a>
             <a href="<?= App\App::URL ?>logout">Atsijungti
                 <i class="fa fa-sign-out"></i>
@@ -45,8 +43,7 @@ if(isset($_SESSION['note'])) {
             <th>Tvarkyti sąskaitą</th>
         </tr>
 
-    <?php foreach ($data as $key => $account) :
-        _d($key)?>
+    <?php foreach ($data as $key => $account) :?>
         <tr>
             <td><?= $account['name'] ?></td>
             <td><?= $account['surname'] ?></td>

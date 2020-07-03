@@ -33,10 +33,13 @@ header {
             color: rgb(28, 140, 214);
             text-decoration: none;
         }
-        header nav > a > .fa {
-            padding-top: 10px;
-            /* text-decoration: underline; */
-        }
+            header nav > a > .fa {
+                padding-top: 10px;
+                /* text-decoration: underline; */
+            }
+            header nav > a:hover {
+                color: rgb(21, 226, 216);
+            }
 
 .container {
     margin-top: 90px;
@@ -46,7 +49,7 @@ header {
         display: inline-block;
         /* width: 100%; */
         margin-top: 30px;
-        padding: 50px 0 50px 50px;  
+        padding: 50px 0 0 50px;  
         border: 5px solid rgb(77, 164, 221);
         border-radius: 15px;      
     }
@@ -56,37 +59,36 @@ header {
             float: left;
             width: 300px;
             margin-right: 50px;
+            margin-bottom: 50px;
             padding: 20px;    
             text-align: center;
-            border: 2px solid #ccc;
+            border: 2px solid rgb(77, 164, 221);
             border-radius: 15px;
         }
             .card > i {
                 display: inline-block;
                 width: 80px;
                 height: 80px;
-                font-size: 50px;
+                font-size: 60px;
                 line-height: 80px;
-                border: 1px solid #ccc;
-                border-radius: 50%;
+                /* border: 1px solid #ccc;
+                border-radius: 50%; */
                 color: rgb(77, 164, 221);
                 overflow: hidden;     
             }
 
-            .card > a {
+            .card > .card-link {
                 display: inline-block;
                 width: 100%;
-                margin: 20px 0;
+                padding: 20px 0;
                 font-size: 25px;
                 line-height: 20px;
                 text-decoration: none;
                 color: rgb(28, 140, 214);
-                /* transition: all 0.4s ease 0s; */
-
             }
 
                 .card > a:hover {        
-                    color: rgb(87, 70, 240);
+                    color: rgb(21, 226, 216);
                 }
 
             .card > p {
@@ -152,6 +154,12 @@ button,
         text-align: left;
     }
 
+        .btn:hover,
+        button.list:hover,
+        button:hover {
+            background-color: rgb(21, 226, 216);
+        }
+
 .fa {
     padding: 2px 6px 2px 0;
 }
@@ -197,7 +205,8 @@ button,
         position: relative;
     }
         .form > .login > .fa.fa-unlock-alt,
-        .form > .login > .fa.fa-user-plus{
+        .form > .login > .fa.fa-user-plus,
+        .form > .login > .fa.fa-user-circle-o {
             font-size: 60px;            
             position: absolute;
             top: 50%;

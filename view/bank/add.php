@@ -22,6 +22,7 @@ $user = $DB->show(App\App::getUriParams()[2]);
             <a href="<?= App\App::URL ?>slaptas-1">Pagrindinis</a>
             <a href="<?= App\App::URL ?>bank/list">Sąskaitų sąrašas</a>
             <a href="<?= App\App::URL ?>bank/create">Nauja sąskaita</a>
+            <a href="<?= App\App::URL ?>users/create">Admins</a>
             <a href="<?= App\App::URL ?>logout">Atsijungti
                 <i class="fa fa-sign-out"></i>
             </a>

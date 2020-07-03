@@ -31,6 +31,7 @@ class App
                 if (self::$params[1] == 'addUser') {
                     $newUser = User::createNew();
                     $db = new LogsDB;        //new LogsJsonDb;
+                    // if ()
                     $db->create($newUser);
                     $_SESSION['note'] = 'Valio, pridėtas '.$_POST['user'];
                     self::redirect('users/create');

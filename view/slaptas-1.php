@@ -7,8 +7,10 @@
 </head>
 <header>
     <nav>
+        <a href="<?= App\App::URL ?>slaptas-1">Pagrindinis</a>
         <a href="<?= App\App::URL ?>bank/list">Sąskaitų sąrašas</a>
         <a href="<?= App\App::URL ?>bank/create">Nauja sąskaita</a>
+        <a href="<?= App\App::URL ?>users/create">Admins</a>
         <a href="<?= App\App::URL ?>logout">Atsijungti
             <i class="fa fa-sign-out"></i>
         </a>
@@ -26,6 +28,11 @@
             <i class="fa fa-address-card-o"></i>
             <a class="card-link"href="<?= App\App::URL ?>bank/create">Nauja sąskaita</a>
             <p>Sukurkite naują sąskaitą, pridėkite naują kliento sąskaitą prie sąskaitų sąrašo</p>
+        </div>
+        <div class="card">
+            <i class="fa fa-unlock"></i>
+            <a class="card-link" href="<?= App\App::URL ?>users/create">Administratoriai</a>
+            <p>Pridėkite naują banko programėlės administratorių</p>
         </div>
     </div>
 </div>

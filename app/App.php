@@ -14,7 +14,7 @@ class App
     const URL = 'http://localhost/uzdaviniai/bankasOOP/public/';
     
     private static $params = [];
-    private static $guarded = ['slaptas-1', 'users', 'bank'];
+    private static $guarded = ['slaptas-1', 'users', 'bank', 'add', 'deduct'];
     // private static $userID = '';
 
 
@@ -106,12 +106,17 @@ class App
                 if (file_exists(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php')) {
                     require(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php');
                 }
+            }
+            if (in_array(self::$params[0], self::$guarded)) {
+                if (!Login::auth()){
+                    self::redirect('login');
+                }
             }            
         }
         if (count(self::$params) == 3) {
             if (self::$params[0] == 'bank') {
 
-                if (self::$params[1] == 'add' || self::$params[1] == 'deduct') {
+                if (self::$params[1] == 'add' || self::$params[1] == 'deduct') {                    
                     if (file_exists(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php')) {
                         require(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php');
                     } 
@@ -129,6 +134,11 @@ class App
                 }
             }
 
+            if (in_array(self::$params[0], self::$guarded)) {
+                if (!Login::auth()){
+                    self::redirect('login');
+                }
+            } 
                            
         }
         

@@ -14,7 +14,7 @@ class App
     const URL = 'http://localhost/uzdaviniai/bankasOOP/public/';
     
     private static $params = [];
-    private static $guarded = ['slaptas-1', 'slaptas-2'];
+    private static $guarded = ['slaptas-1', 'users', 'bank'];
     // private static $userID = '';
 
 
@@ -55,8 +55,36 @@ class App
             if (self::$params[0] == 'bank') {
 
                 if (self::$params[1] == 'addAccount') {
-                    $newAccount = Account::createNew();
+                    
+                    if (strlen($_POST['name']) < 3) {
+                        $_SESSION['note'] = '<span style="color:red;">Įveskite vardą</span>';
+                        $_SESSION['surname'] = $_POST['surname'];
+                        $_SESSION['id'] = $_POST['id'];
+                        self::redirect('bank/create');
+                    } elseif(strlen($_POST['surname']) < 3) {
+                        $_SESSION['note'] = '<span style="color:red;">Įveskite vardą ir pavardę</span>'; 
+                        $_SESSION['name'] = $_POST['name'];
+                        $_SESSION['id'] = $_POST['id'];       
+                        self::redirect('bank/create');
+                    } elseif(!Account::verifyID($_POST['id'])) {
+                        $_SESSION['note'] = '<span style="color:red;">Neteisingai įvestas asmens kodas</span>'; 
+                        $_SESSION['name'] = $_POST['name'];
+                        $_SESSION['surname'] = $_POST['surname'];       
+                        self::redirect('bank/create');
+                    }
                     $db = new DB;
+                    $data = $db->showAll();
+                    foreach ($data as $key => $account) {
+                        if ($data[$key]['id'] == $_POST['id'] && $data[$key]['name'] != $_POST['name'] 
+                            && $data[$key]['surname'] != $_POST['surname']) {
+                            $_SESSION['note'] = '<span style="color:red;">Neteisingai įvestas asmens kodas!</span>';
+                            $_SESSION['name'] = $_POST['name'];
+                            $_SESSION['surname'] = $_POST['surname'];       
+                            self::redirect('bank/create');
+                        }
+                    }
+                    
+                    $newAccount = Account::createNew();
                     $db->create($newAccount);
                     $_SESSION['note'] = 'Pridėta nauja kliento sąskaita';
                     self::redirect('bank/create');
@@ -113,7 +141,8 @@ class App
                     self::redirect('slaptas-1');
                 }
                 else {
-                    self::redirect('login');
+                    $_SESSION['note'] = '<span style="color:red;">Neteisingas prisijungimo vardas arba slaptažodis</span>';
+                    self::redirect('login');                    
                 }
             }
     
@@ -140,11 +169,6 @@ class App
     {
         return self::$params;
     }
-
-    // public static function getUserID()
-    // {
-    //     return self::$userID;
-    // }
 
     public static function redirect($param)
     {

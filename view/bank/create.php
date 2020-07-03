@@ -29,7 +29,7 @@ $data = $DB->showAll();
         <h2 class="new">Pridėti naują sąskaitą</h2>
 
 <?php
-if(isset($_SESSION['note'])) {
+if (isset($_SESSION['note'])) {
     echo '<br>', $_SESSION['note'];
     unset($_SESSION['note']);    
 }
@@ -43,14 +43,14 @@ if(isset($_SESSION['note'])) {
             <label for="">Vardas</label><br>
             <input type="text" name="name" value=<?= $_SESSION['name'] ?? '' ?>><br><br>
 <?php
-if(isset($_SESSION['name'])) {
+if (isset($_SESSION['name'])) {
     unset($_SESSION['name']);
 }
 ?>
             <label for="">Pavardė</label><br>
             <input type="text" name="surname" value=<?= $_SESSION['surname'] ?? '' ?>><br><br>
 <?php
-if(isset($_SESSION['surname'])) {
+if (isset($_SESSION['surname'])) {
     unset($_SESSION['surname']);
 }
 ?>
@@ -59,7 +59,7 @@ if(isset($_SESSION['surname'])) {
             <label for="">Asmens kodas</label><br>
             <input type="text" maxlength="11" name="id" value=<?= $_SESSION['id'] ?? ''?>><br><br>
 <?php
-if(isset($_SESSION['id'])) {
+if (isset($_SESSION['id'])) {
     unset($_SESSION['id']);
 }
 ?>        

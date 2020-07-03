@@ -36,7 +36,12 @@ if(isset($_SESSION['note'])) {
         </div>
         <form action="<?= App\App::URL ?>users/addUser" method="post">
             <label for="">Naujo vartotojo vardas</label><br>
-            <input type="text" name="user"><br><br>
+            <input type="text" name="name" value = <?= $_SESSION['name'] ?? '' ?>><br><br>
+<?php
+if (isset($_SESSION['name'])) {
+    unset($_SESSION['name']);
+}
+?>
             <label for="">Slaptažodis</label><br>
             <input type="text" name="password"><br><br>
             <button type="submit">Pridėti</button>

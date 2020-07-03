@@ -23,8 +23,12 @@ class JsonDB implements DataBase
     }
  
     public function update(string $userId, array $userData) : void {
-        
-
+        foreach ($this->data as $key => $value) {
+            if ($userId == $key) {
+                $this->data[$key] = $userData;
+            }
+        }
+        $this->save();
     }
  
     public function delete(string $userId) : void {
@@ -38,7 +42,6 @@ class JsonDB implements DataBase
                 return $value;
             }
         }
-
     }
     
     public function showAll() : array {

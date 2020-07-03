@@ -1,8 +1,9 @@
 <?php
 $DB = new App\DB\JsonDb;
-$user = $DB->show('87be17a5-4b24-45f7-a6d4-7936315e3e6b');
+// $data = $DB->showAll();
+$user = $DB->show(App\App::getUriParams()[2]);
 
-_d($user);
+
 ?>
 
 
@@ -53,9 +54,9 @@ if(isset($_SESSION['note'])) {
             <td><?= $user['balance'] ?></td>
             <td>EUR</td>
             <td>
-                <form action="<?= App\App::URL ?>bank/addFunds" method="post">
+                <form action=<?= App\App::URL.'bank/addFunds/'.App\App::getUriParams()[2]?> method="post">
                     <input type="number" step="0.01" name="balance">
-                    <button type="submit" name="add" value="">Pridėti lėšų</button>
+                    <button type="submit" name="add">Pridėti lėšų</button>
                 </form>
             </td>
         </tr> 

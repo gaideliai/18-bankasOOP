@@ -1,6 +1,9 @@
 <?php
 namespace App;
 
+use App\DB\JsonDb as DB;
+use App\App;
+
 class Account {
 
     public static function createNew() 
@@ -36,5 +39,21 @@ class Account {
             $string .= substr($IBAN, $i, 4);
         }
         return $string;
+    }
+
+    public static function sum() {
+        if (!empty($_POST)) {
+            $DB = new DB;
+            $user = $DB->show(App::getUriParams()[2]);
+            if ($_POST['balance'] > 0) {
+                $user['balance'] += $_POST['balance'];    
+                $DB->update(App::getUriParams()[2], $user);
+                $_SESSION['note'] = 'Lėšos įskaitytos į sąskaitą.';
+            } else {
+                $_SESSION['note'] = '<span style="color:red;">Įveskite sumą - teigiamą skaičių</span>';
+            }
+        } else {
+            $_SESSION['note'] = '<span style="color:red;">Įveskite sumą</span>';
+        }  
     }
 }

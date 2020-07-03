@@ -15,6 +15,7 @@ class App
     
     private static $params = [];
     private static $guarded = ['slaptas-1', 'slaptas-2'];
+    // private static $userID = '';
 
 
     public static function start()
@@ -43,14 +44,13 @@ class App
 
                 if (self::$params[1] == 'addAccount') {
                     $newAccount = Account::createNew();
-                    $db = new DB;        //new JsonDb;
+                    $db = new DB;
                     $db->create($newAccount);
                     $_SESSION['note'] = 'Pridėta nauja kliento sąskaita';
                     self::redirect('bank/create');
                 }
 
                 if (self::$params[1] == 'delete') {
-                    _d('trynimas'.$_POST['delete']);
                     $db = new DB;        
                     $db->delete($_POST['delete']);
                     $_SESSION['note'] = 'Ištrinta kliento sąskaita';
@@ -69,8 +69,12 @@ class App
                     if (file_exists(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php')) {
                         require(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php');
                     } 
-                    $id = self::$params[2];
+                }
 
+                if (self::$params[1] == 'addFunds') {
+                    $userID = self::$params[2];
+                    Account::sum();
+                    self::redirect('bank/add/'.$userID);
                 }
             }
 
@@ -113,6 +117,11 @@ class App
     {
         return self::$params;
     }
+
+    // public static function getUserID()
+    // {
+    //     return self::$userID;
+    // }
 
     public static function redirect($param)
     {

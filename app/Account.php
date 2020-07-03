@@ -47,18 +47,31 @@ class Account {
     }
 
     public static function sum() {
-        if (isset($_POST['balance'])) {
-            $DB = new DB;
-            $userData = $DB->show(App::getUriParams()[2]);
-            if ($_POST['balance'] > 0) {
-                $userData['balance'] += $_POST['balance'];    
-                $DB->update(App::getUriParams()[2], $userData);
-                $_SESSION['note'] = 'Lėšos įskaitytos į sąskaitą';
-            } else {
-                $_SESSION['note'] = '<span style="color:red;">Įveskite sumą - teigiamą skaičių</span>';
-            }
+        $DB = new DB;
+        $userData = $DB->show(App::getUriParams()[2]);
+        if ($_POST['balance'] > 0) {
+            $userData['balance'] += $_POST['balance'];    
+            $DB->update(App::getUriParams()[2], $userData);
+            $_SESSION['note'] = 'Lėšos įskaitytos į sąskaitą';
         } else {
-            $_SESSION['note'] = '<span style="color:red;">Įveskite sumą</span>';
-        }  
+            $_SESSION['note'] = '<span style="color:red;">Įveskite sumą - teigiamą skaičių</span>';
+        }
     }
+
+    public static function substract() {
+        $DB = new DB;
+        $userData = $DB->show(App::getUriParams()[2]);
+        if ($_POST['balance'] <= $userData['balance'] && $_POST['balance'] > 0) {
+            $userData['balance'] -= $_POST['balance'];    
+            $DB->update(App::getUriParams()[2], $userData);
+            $_SESSION['note'] = 'Lėšos nurašytos iš sąskaitos';
+        } elseif ($_POST['balance'] < 0) {
+            $_SESSION['note'] = '<span style="color:red;">Įveskite sumą - teigiamą skaičių</span>';
+        }
+         else {
+            $_SESSION['note'] = '<span style="color:red;">Sąskaitoje nepakanka lėšų. Operacija neįvykdyta.</span>';
+        }
+    }
+
+
 }

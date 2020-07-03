@@ -25,7 +25,7 @@ $user = $DB->show(App\App::getUriParams()[2]);
             </a>
         </nav>       
     </header>
-    <h2>Lėšų įskaitymas</h2>
+    <h2>Lėšų nurašymas</h2>
 
 <?php
 if(isset($_SESSION['note'])) {
@@ -52,9 +52,9 @@ if(isset($_SESSION['note'])) {
             <td><?= App\Account::formatCurrency($user['balance']) ?></td>
             <td>EUR</td>
             <td>
-                <form action=<?= App\App::URL.'bank/addFunds/'.App\App::getUriParams()[2]?> method="post">
+                <form action=<?= App\App::URL.'bank/deductFunds/'.App\App::getUriParams()[2]?> method="post">
                     <input type="number" step="0.01" name="balance">
-                    <button type="submit" name="add">Pridėti lėšų</button>
+                    <button type="submit" name="deduct">Nuskaičiuoti lėšas</button>
                 </form>
             </td>
         </tr> 

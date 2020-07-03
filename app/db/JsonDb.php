@@ -52,5 +52,9 @@ class JsonDB implements DataBase
         file_put_contents('./../db/data.json', json_encode($this->data));
     }
 
+    private function sortData(array $data) : array {
+        
+        usort($data, sort_by_surname($a, $b));         
+    }
     
 }

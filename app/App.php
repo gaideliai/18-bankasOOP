@@ -72,7 +72,7 @@ class App
         if (count(self::$params) == 3) {
             if (self::$params[0] == 'bank') {
 
-                if (self::$params[1] == 'add') {
+                if (self::$params[1] == 'add' || self::$params[1] == 'deduct') {
                     if (file_exists(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php')) {
                         require(self::VIEW_DIR.self::$params[0].'/'.self::$params[1].'.php');
                     } 
@@ -82,6 +82,11 @@ class App
                     $userID = self::$params[2];
                     Account::sum();
                     self::redirect('bank/add/'.$userID);
+                }
+                if (self::$params[1] == 'deductFunds') {
+                    $userID = self::$params[2];
+                    Account::substract();
+                    self::redirect('bank/deduct/'.$userID);
                 }
             }
 

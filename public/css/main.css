@@ -44,14 +44,17 @@ header {
 .container {
     margin-top: 90px;
 }
+    /* .container > h1 {
+        text-align: center;
+    } */
 
     .container > .menu {
         display: inline-block;
-        /* width: 100%; */
+        /* width: 1000px; */
         margin-top: 30px;
         padding: 50px 0 0 50px;  
         border: 5px solid rgb(77, 164, 221);
-        border-radius: 15px;      
+        border-radius: 15px;        
     }
 
         .container > .menu > .card {

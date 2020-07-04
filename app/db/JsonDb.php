@@ -46,6 +46,8 @@ class JsonDB implements DataBase
     
     public function showAll() : array {
         return $this->data;
+        // $sortedData = $this->sortData($this->data);
+        // return $sortedData;
     }
 
     private function save() {
@@ -54,7 +56,7 @@ class JsonDB implements DataBase
 
     private function sortData(array $data) : array {
         
-        usort($data, sort_by_surname($a, $b));         
     }
+    
     
 }

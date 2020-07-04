@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use App\DB\LogsJsonDB;
+use App\DB\LogsJsonDB as LogsDB;
 
 class Login
 {
@@ -10,7 +10,9 @@ class Login
 
     public function __construct()
     {
-        $logs = json_decode(file_get_contents('./../db/logs.json'), 1);
+        // $logs = json_decode(file_get_contents('./../db/logs.json'), 1);
+        $logsDB = new LogsDB;
+        $logs = $logsDB->showAll();
         if (!empty($_POST)) {
             foreach ($logs as $user) {
                 if ($user['name'] === $_POST['user'] &&

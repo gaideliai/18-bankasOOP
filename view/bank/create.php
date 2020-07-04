@@ -66,7 +66,7 @@ if (isset($_SESSION['id'])) {
             <input type="hidden" name="balance" value="0">
             
             <button type="submit" name="submit">Pridėti</button>
-            <button type="submit" name="clear">Išvalyti</button><br>
+            <!-- <button type="submit" name="clear">Išvalyti</button><br> -->
         </form>
     </div>
     

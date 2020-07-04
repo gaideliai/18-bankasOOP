@@ -2,9 +2,11 @@
 namespace App;
 
 use App\Login;
+use App\API;
 use App\User;
 use App\Account;
 use App\DB\LogsJsonDb as LogsDB;
+use App\DB\CacheJsonDb as Cache;
 use App\DB\JsonDb as DB;
 
 class App
@@ -14,7 +16,7 @@ class App
     const URL = 'http://localhost/uzdaviniai/bankasOOP/public/';
     
     private static $params = [];
-    private static $guarded = ['slaptas-1', 'users', 'bank', 'add', 'deduct'];
+    private static $guarded = ['slaptas-1', 'users', 'bank'];
     // private static $userID = '';
 
 
@@ -23,6 +25,7 @@ class App
         session_start();
         $param = str_replace(self::DIR, '', $_SERVER['REQUEST_URI']);
         self::$params = explode('/', $param);
+        
         
 
         if (count(self::$params) == 2) {

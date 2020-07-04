@@ -35,7 +35,7 @@ class LogsJsonDB implements DataBase
     }
     
     public function showAll() : array {
-        
+        return $this->logs;
     }
 
     private function save() {

@@ -49,8 +49,12 @@ if(isset($_SESSION['note'])) {
             <td><?= $user['name'] ?></td>
             <td><?= $user['surname'] ?></td>
             <td><?= App\Account::formatIban($user['account']) ?></td>
-            <td><?= App\Account::formatCurrency($user['balance']) ?></td>
-            <td>EUR</td>
+            <td><?= App\Account::formatCurrency($user['balance']) ?><br>
+                <span style="color:#777;font-style:italic;"><?= App\Account::formatCurrency($user['balance']*App\API::getRate()) ?></span>
+            </td>
+            <td>EUR<br>
+                <span style="color:#777;font-style:italic;">USD</span>
+            </td>
             <td>
                 <form action=<?= App\App::URL.'bank/deductFunds/'.App\App::getUriParams()[2]?> method="post">
                     <input type="number" step="0.01" name="balance">

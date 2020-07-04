@@ -25,7 +25,7 @@ class CacheJsonDb
  
     public function update() {
         foreach ($this->cache as $key => $value) {  
-            if (($this->cache[$key]['time'] + 360) < time()) {
+            if (($this->cache[$key]['time'] + 3600) < time()) {
                 $this->delete($key);
                 $this->create();
             }
@@ -37,12 +37,14 @@ class CacheJsonDb
         $this->save();
     }
  
-    // public function show(string $userId) : array {
-
-    // }
-    
-    public function showAll() : array {
+    public function showAll() {
         return $this->cache;
+    } 
+
+    public function show() {
+        foreach ($this->cache as $key => $value) {  
+            return $this->cache[$key]['rate'];
+        }
     }
 
     private function save() {

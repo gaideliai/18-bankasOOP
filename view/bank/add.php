@@ -1,6 +1,9 @@
 <?php
 $DB = new App\DB\JsonDb;
 $user = $DB->show(App\App::getUriParams()[2]);
+
+$cache = new App\DB\CacheJsonDb;
+$exchangeRate = $cache->show();
 ?>
 
 
@@ -50,7 +53,7 @@ if(isset($_SESSION['note'])) {
             <td><?= $user['surname'] ?></td>
             <td><?= App\Account::formatIban($user['account']) ?></td>
             <td><?= App\Account::formatCurrency($user['balance']) ?><br>
-                <span style="color:#777;font-style:italic;"><?= App\Account::formatCurrency($user['balance']*App\API::getRate()) ?></span>
+                <span style="color:#777;font-style:italic;"><?= App\Account::formatCurrency($user['balance'] * $exchangeRate) ?></span>
             </td>
             <td>EUR<br>
                 <span style="color:#777;font-style:italic;">USD</span>

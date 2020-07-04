@@ -27,13 +27,20 @@ class App
         self::$params = explode('/', $param);
         
         
+        $cache = new Cache;
+        $rateData = $cache->showAll();
+        if (empty($rateData)) {
+            $cache->create();
+        } else {
+            $cache->update();
+        }
 
         if (count(self::$params) == 2) {
             if (self::$params[0] == 'users') {
 
                 if (self::$params[1] == 'addUser') {
                     $newUser = User::createNew();
-                    $db = new LogsDB;        //new LogsJsonDb;
+                    $db = new LogsDB;
                     if (strlen($_POST['name']) == 0) {
                         $_SESSION['note'] = '<span style="color:red;">Įveskite vartotojo vardą</span>';
                         self::redirect('users/create');

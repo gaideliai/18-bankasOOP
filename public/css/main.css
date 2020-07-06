@@ -113,24 +113,38 @@ table {
     max-width: 100%;
 }
 
-td, th {
-    border: 1px solid #ddd;
-    text-align: left;
-    padding: 8px;
-    color: #333;
+    td, th {
+        border: 1px solid #ddd;
+        text-align: left;
+        padding: 8px;
+        color: #333;
+    }
+
+    th {
+        color: #000;
+    }
+
+        tr:nth-child(even) {
+            background-color: rgb(236, 233, 233);
+        }
+
+        
+.back {
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 690px;
 }
 
-    /* td.iban {
-        color: rgb(4, 130, 248);
-    } */
+    .back > a {
+        line-height: 40px;
+        font-size: 20px;
+        color: rgb(28, 140, 214);
+        text-decoration: none;
+    }
 
-th {
-    color: #000;
-}
-
-tr:nth-child(even) {
-    background-color: rgb(236, 233, 233);
-}
+        .back > a:hover {
+            color: rgb(21, 226, 216);
+        }
 
 button,
 .btn {

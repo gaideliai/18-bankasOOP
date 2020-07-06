@@ -67,5 +67,8 @@ if(isset($_SESSION['note'])) {
         </tr> 
 
     </table>
+    <div class="back">
+        <a href="<?= App\App::URL ?>bank/list">Grįžti į sąrašą</a>
+    </div>
 </body>
 </html>

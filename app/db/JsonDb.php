@@ -45,18 +45,13 @@ class JsonDB implements DataBase
     }
     
     public function showAll() : array {
+        asort($this->data);
         return $this->data;
-        // $sortedData = $this->sortData($this->data);
-        // return $sortedData;
     }
 
     private function save() {
         file_put_contents('./../db/data.json', json_encode($this->data));
     }
 
-    private function sortData(array $data) : array {
-        
-    }
-    
     
 }

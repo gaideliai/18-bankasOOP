@@ -65,7 +65,7 @@ class Account {
             $userData['balance'] -= $_POST['balance'];    
             $DB->update(App::getUriParams()[2], $userData);
             $_SESSION['note'] = 'Lėšos nurašytos iš sąskaitos';
-        } elseif ($_POST['balance'] < 0) {
+        } elseif ($_POST['balance'] <= 0) {
             $_SESSION['note'] = '<span style="color:red;">Įveskite sumą - teigiamą skaičių</span>';
         }
          else {

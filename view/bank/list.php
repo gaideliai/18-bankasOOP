@@ -1,7 +1,9 @@
 
 <?php
-$DB = new App\DB\JsonDb;
+$DB = new App\DB\SQLdb;
 $data = $DB->showAll();
+
+// _d($data);
 ?>
 
 
@@ -47,23 +49,23 @@ if(isset($_SESSION['note'])) {
 
     <?php foreach ($data as $key => $account) :?>
         <tr>
-            <td><?= $account['name'] ?></td>
-            <td><?= $account['surname'] ?></td>
+            <td><?= $account['firstname'] ?></td>
+            <td><?= $account['lastname'] ?></td>
             <td><?= $account['id'] ?></td>
             <td class="iban"><?= App\Account::formatIban($account['account']) ?></td>
             <td>
                 <form action="<?= App\App::URL ?>bank/delete" method="post">
                     
-                    <button class="list" type="submit" name="delete" value="<?= $key ?>">
+                    <button class="list" type="submit" name="delete" value="<?= $account['clientID'] ?>">
                         <i class="fa fa-trash"></i>Ištrinti sąskaitą
                     </button>
                     <div class="btn">
-                        <a href="<?= App\App::URL.'bank/add/'.$key ?>">
+                        <a href="<?= App\App::URL.'bank/add/'.$account['clientID'] ?>">
                             <i class="fa fa-plus-square"></i>Pridėti lėšų
                         </a>
                     </div>
                     <div class="btn">
-                        <a href="<?= App\App::URL.'bank/deduct/'.$key ?>">
+                        <a href="<?= App\App::URL.'bank/deduct/'.$account['clientID'] ?>">
                             <i class="fa fa-minus-square"></i>Nuskaičiuoti lėšas
                         </a>
                     </div>                    

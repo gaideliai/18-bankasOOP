@@ -4,7 +4,7 @@ namespace App\DB;
 use App\DB\DataBase;
 use Ramsey\Uuid\Uuid;
 
-class JsonDB implements DataBase 
+class JsonDB
 {
     private $data;
 

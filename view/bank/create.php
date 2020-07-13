@@ -1,5 +1,5 @@
 <?php
-$DB = new App\DB\JsonDb;
+$DB = new App\DB\SQLdb;
 $data = $DB->showAll();
 ?>
 

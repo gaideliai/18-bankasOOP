@@ -22,15 +22,15 @@ class LogsJsonDB implements DataBase
         $this->save();
     }
  
-    public function update(string $userId, array $userData) : void {
+    public function update(int $userId, array $userData) : void {
 
     }
  
-    public function delete(string $userId) : void {
+    public function delete(int $userId) : void {
 
     }
  
-    public function show(string $userId) : array {
+    public function show(int $userId) : array {
 
     }
     

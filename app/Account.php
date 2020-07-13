@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use App\DB\JsonDb as DB;
+use App\DB\SQLdb as DB;
 use App\App;
 
 class Account {

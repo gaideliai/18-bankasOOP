@@ -1,5 +1,5 @@
 <?php
-$DB = new App\DB\JsonDb;
+$DB = new App\DB\SQLdb;
 $user = $DB->show(App\App::getUriParams()[2]);
 
 $cache = new App\DB\CacheJsonDb;
@@ -49,8 +49,8 @@ if(isset($_SESSION['note'])) {
         </tr>
   
         <tr>
-            <td><?= $user['name'] ?></td>
-            <td><?= $user['surname'] ?></td>
+            <td><?= $user['firstname'] ?></td>
+            <td><?= $user['lastname'] ?></td>
             <td><?= App\Account::formatIban($user['account']) ?></td>
             <td><?= App\Account::formatCurrency($user['balance']) ?><br>
                 <span style="color:#777;font-style:italic;"><?= App\Account::formatCurrency($user['balance'] * $exchangeRate) ?></span>

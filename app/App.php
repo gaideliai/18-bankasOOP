@@ -7,13 +7,15 @@ use App\User;
 use App\Account;
 use App\DB\LogsJsonDb as LogsDB;
 use App\DB\CacheJsonDb as Cache;
-use App\DB\JsonDb as DB;
+// use App\DB\JsonDb as DB;
+use App\DB\SQLdb as DB;
+use PDO;
 
 class App
 {
-    const DIR = '/uzdaviniai/bankasOOP/public/';
+    const DIR = '/bankasSQL/public/';
     const VIEW_DIR = './../view/';
-    const URL = 'http://localhost/uzdaviniai/bankasOOP/public/';
+    const URL = 'http://localhost/bankasSQL/public/';
     
     private static $params = [];
     private static $guarded = ['slaptas-1', 'users', 'bank'];
@@ -23,6 +25,7 @@ class App
     public static function start()
     {
         session_start();
+        
         $param = str_replace(self::DIR, '', $_SERVER['REQUEST_URI']);
         self::$params = explode('/', $param);
         
